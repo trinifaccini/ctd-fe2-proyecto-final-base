@@ -35,13 +35,7 @@ export const StyledBioDesc = styled.p`
     margin: 1rem auto;
 `;
 
-interface IButton {
-    key: string;
-    active: boolean
-    onClick: (NombresSimpsons: string) => void;
-}
-  
-export const StyledButton = styled.button<IButton>`
+export const StyledButton = styled.button<{active?: boolean }>`
     border-radius: 5px;
     border: 1px solid darkgray;  
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);

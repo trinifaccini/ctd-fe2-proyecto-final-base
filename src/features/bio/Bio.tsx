@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NombresSimpsons, INFO_SIMPSONS } from "./constants";
 import styles from "./styles.module.css";
 
-import { StyledContainer, StyledButtonContainer, StyledBioImg, StyledBioName, StyledBioDesc, StyledButton } from "./Bio.styles";
+import { StyledContainer, StyledButtonContainer, StyledBioImg, StyledBioName, StyledBioDesc, StyledButton } from "./styles";
 
 const Bio = () => {
   const [bioActiva, setBioActiva] = useState(
