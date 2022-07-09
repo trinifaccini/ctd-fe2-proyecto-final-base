@@ -12,10 +12,9 @@ import { obtenerMensaje } from "./utils";
 
 function Cita() {
   const [valorInput, setValorInput] = useState("");
-  const { cita = "", personaje = "" } =
-    useAppSelector(obtenerCitaDelEstado, shallowEqual) || {};
+  const { cita = "", personaje = "" } = useAppSelector(obtenerCitaDelEstado, shallowEqual) || {};
+  
   const estadoPedido = useAppSelector(obtenerEstadoDelPedido);
-
   const dispatch = useAppDispatch();
 
   const onClickObtenerCita = () => dispatch(obtenerCitaDeLaAPI(valorInput));
@@ -35,13 +34,15 @@ function Cita() {
         onChange={(e) => setValorInput(e.target.value)}
         placeholder="Ingresa el nombre del autor"
       />
+     
       <Boton
         aria-label={valorInput ? "Obtener Cita" : "Obtener cita aleatoria"}
         onClick={onClickObtenerCita}
+        data-testid="buscarCita"
       >
         {valorInput ? "Obtener Cita" : "Obtener cita aleatoria"}
       </Boton>
-      <Boton aria-label="Borrar" onClick={onClickBorrar} secondary={true}>
+      <Boton aria-label="Borrar" onClick={onClickBorrar} secondary={true} data-testid="borrarCita">
         Borrar
       </Boton>
     </ContenedorCita>

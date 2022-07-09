@@ -32,9 +32,8 @@ const Noticias = () => {
         {noticias.map((n) => (
           <NoticiaCard n={n} setModal={setModal}/>
         ))}
-        {modal ? 
-          <ModalContainer modal={modal} setModal={setModal}/>
-          : null}
+        {modal && 
+          <ModalContainer modal={modal} setModal={setModal}/>}
       </ListaNoticias>
     </ContenedorNoticias>
   );

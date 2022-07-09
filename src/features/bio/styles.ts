@@ -44,14 +44,14 @@ export const StyledButton = styled.button<{active?: boolean }>`
     font-family: "Homer Simpson Revised", sans-serif;
     font-size: 1.4rem;
 
+    &:hover {
+        cursor: pointer;
+    }
+
     ${({active}) => active && {
         color: 'whitesmoke',
         backgroundColor: '#fdd835',
         textShadow: '2px 2px 0 #000000, 2px -2px 0 #000000 , -2px 2px 0 #000000, -2px -2px 0 #000000, 2px 0px 0 #000000 , 0px 2px 0 #000000, -2px 0px 0 #000000, 0px -2px 0 #000000'
     }};
-
-    &:hover {
-        cursor: pointer;
-    }
 
 `;

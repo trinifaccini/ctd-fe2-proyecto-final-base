@@ -14,24 +14,20 @@ const initialState: EstadoCita = {
   estado: ESTADO_FETCH.INACTIVO,
 };
 
-export const obtenerCitaAsync = createAsyncThunk(
-  "cita/obtenerCita",
-  async (personaje: string) => {
-    try {
-      const cita = await obtenerCita(personaje);
-
-      return cita;
-    } catch (err) {
-      throw err;
-    }
+export const obtenerCitaAsync = createAsyncThunk("cita/obtenerCita", async (personaje: string) => {
+  try {
+    const cita = await obtenerCita(personaje);
+    return cita;
+  } catch (err) {
+    throw err;
   }
-);
+});
 
 export const citaSlice = createSlice({
   name: "citas",
   initialState,
   reducers: {
-    limpiar: () => initialState,
+    limpiar: () => initialState, // se usa para regresarlo al inicio
   },
 
   extraReducers: (builder) => {
@@ -57,6 +53,7 @@ export const obtenerCitaDeLaAPI =
     dispatch(obtenerCitaAsync(personaje));
   };
 
+// Ver como se usan despues estos
 export const obtenerCitaDelEstado = (state: RootState) => state.cita.data;
 export const obtenerEstadoDelPedido = (state: RootState) => state.cita.estado;
 
