@@ -55,7 +55,7 @@ describe("Cita", () => {
             const button = screen.getByTestId('buscarCita');
             await userEvent.click(button);
 
-            //expect(await screen.findByText("CARGANDO...")).toBeInTheDocument(); // NO SE POR QUÉ NO MUESTRA EL CARGANDO
+            expect(screen.findByText("CARGANDO...")).toBeInTheDocument(); // NO SE POR QUÉ NO MUESTRA EL CARGANDO
             expect(await screen.findByText("Por favor ingrese un nombre válido")).toBeInTheDocument();
 
         })
@@ -70,7 +70,7 @@ describe("Cita", () => {
             const button = screen.getByTestId('buscarCita');
             await userEvent.click(button);
 
-            //expect(await screen.findByText("CARGANDO...")).toBeInTheDocument(); // NO SE POR QUÉ NO MUESTRA EL CARGANDO
+            expect(await screen.findByText("CARGANDO...")).toBeInTheDocument();
             //expect(await( await screen.findByText("No se encontro ninguna cita"))).toBeInTheDocument(); ESTO DEBERIA MOSTRAR (CREO)
             expect(await screen.findByText("Por favor ingrese un nombre válido")).toBeInTheDocument();
 
