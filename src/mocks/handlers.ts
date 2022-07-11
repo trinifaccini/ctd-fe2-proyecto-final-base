@@ -4,7 +4,6 @@ export const handlers = [
   rest.get("https://thesimpsonsquoteapi.glitch.me/quotes", (req, res, ctx) => {
 
     const character = req.url.searchParams.get("character");
-
     const citaAleatoria = [
       {
         quote: "My eyes! The goggles do nothing!",
@@ -23,23 +22,25 @@ export const handlers = [
       },
     ]
 
-    if(character?.length === 0)
-      return res(ctx.json(citaAleatoria));
+    
+    if(character?.length === 0 || !character){
+      console.log("Nombre: nulo o vacío - Cita aleatoria")
+      return res(ctx.json(citaAleatoria)); 
+    }
 
     switch(character){
 
+      // Nombre válido, cita existente
       case ("Homer"): {
+        console.log("Nombre: Homer - Cita: existente")
         return res(ctx.json(citaHomero))
       }
 
-      case (null): {
-        return res(ctx.json(citaAleatoria));
-      }
-
       default: {
+        console.log("Nombre: válido - Cita: inexistente")
         return res(ctx.json([]))
       }
     }
-
+    
   })
 ];

@@ -4,13 +4,10 @@ import { screen } from '@testing-library/react';
 import { server } from '../../mocks/server';
 import userEvent from '@testing-library/user-event';
 
-// Inicializamos el servidor
 beforeAll(() => server.listen())
 
-// Despues de cada test, reseteamos el servidor
 afterEach(() => server.resetHandlers())
 
-// Lo cerramos cuando terminan
 afterAll(() => server.close())
 
 
@@ -47,6 +44,8 @@ describe("Cita", () => {
     });
 
     describe("Se ingrsa nombre inválido (numero)", () => {
+        // NO USA EL HANDLER PORQUE CUANDO SE INGRESA UN NUMERO NO LLEGA A HACER EL FETCH A LA API, SE DEVUELVE UN ERROR ANTES
+        // NO MUESTRA EL CARGANDO... POR LA MISMA RAZÓN
         it("Debería mostrar mensaje de error" , async() => {
 
             render(<Cita />);
@@ -55,13 +54,12 @@ describe("Cita", () => {
             const button = screen.getByTestId('buscarCita');
             await userEvent.click(button);
 
-            //expect(screen.findByText("CARGANDO...")).toBeInTheDocument(); // NO SE POR QUÉ NO MUESTRA EL CARGANDO
-            expect(await screen.findByText("Por favor ingrese un nombre válido")).toBeInTheDocument();
+            expect(await await(screen.findByText("Por favor ingrese un nombre válido"))).toBeInTheDocument();
 
         })
     });
 
-    describe("Se ingresa nombre válido e inexistente", () => {
+    describe("Se ingresa nombre válido con cita inexistente", () => {
         it("No debería mostrar ninguna cita", async() => {
 
             render(<Cita />);
@@ -71,8 +69,7 @@ describe("Cita", () => {
             await userEvent.click(button);
 
             expect(await screen.findByText("CARGANDO...")).toBeInTheDocument();
-            //expect(await( await screen.findByText("No se encontro ninguna cita"))).toBeInTheDocument(); ESTO DEBERIA MOSTRAR (CREO)
-            expect(await screen.findByText("Por favor ingrese un nombre válido")).toBeInTheDocument();
+            expect(await await(screen.findByText("Por favor ingrese un nombre válido"))).toBeInTheDocument();
 
         })
     });

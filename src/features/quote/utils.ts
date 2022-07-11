@@ -14,5 +14,6 @@ export const obtenerMensaje: (cita: string, estadoPedido: ESTADO_FETCH) => strin
     return NOMBRE_INVALIDO;
   }
  
+  // Como está hecho, nunca va a dar el mensaje de NO ENCONTRADO
   return cita ? `${cita}` : NO_ENCONTRADO;
 };
